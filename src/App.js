@@ -8,7 +8,6 @@ import Header from "./components/Header";
 function App() {
     const [recipes, setRecipes] = useState([])
     const [search, setSearch] = useState('')
-    const [error, setError] = useState('')
 
 
     useEffect(() => {
@@ -20,13 +19,11 @@ function App() {
         fetchData()
     }, [])
 
-    const recipesLength = recipes.length
 
     const searchRecipe = async (e) => {
         e.preventDefault()
         const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${search}&${API_KEY}`)
         setRecipes(response.data.results)
-        setError(search)
         setSearch('')
     }
 
@@ -34,14 +31,11 @@ function App() {
   return (
       <div>
           <Header search={search} setSearch={setSearch} searchRecipe={searchRecipe}></Header>
-          { recipesLength === 0
-              ? <p>No results for {error}</p>
-              : <div className={styles.wrapper}>
-                  {recipes.map(recipe => (
-                      <Recipe key={recipe.id} recipe={recipe}/>
-                  ))}
-                </div>
-          }
+            <div className={styles.wrapper}>
+              {recipes.map(recipe => (
+                  <Recipe key={recipe.id} recipe={recipe}/>
+              ))}
+            </div>
       </div>
   );
 }

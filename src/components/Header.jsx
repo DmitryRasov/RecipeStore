@@ -4,7 +4,6 @@ import SearchInput from "./ui/SearchInput";
 import SearchButton from "./ui/SearchButton";
 
 const Header = ({search, searchRecipe, setSearch}) => {
-
     return (
         <div className={styles.header}>
             <h1>Recipe App</h1>

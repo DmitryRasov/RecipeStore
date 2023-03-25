@@ -21,9 +21,12 @@ const Recipe = ({recipe}) => {
 
     return (
         <div key={recipe.id} className={styles.item}>
-            <h3 className={styles.header}>{recipe.title}</h3>
+            <h3  className={styles.header}>{recipe.title}</h3>
             <div style={{backgroundImage: `url(${recipe.image})`}} className={styles.image}></div>
-            <MainButton onClick={() => getRecipeData(recipe.id)} buttonTitle={'Ingredients'}></MainButton>
+            <div className={styles.wrapper}>
+                <MainButton role={"favorite"} buttonTitle={'Add to favorite'}></MainButton>
+                <MainButton role={"ingredient"} onClick={() => getRecipeData(recipe.id)} buttonTitle={'Ingredients'}></MainButton>
+            </div>
             { isDescription
                 ? <RecipeDescription recipe={recipe} recipeData={recipeData} close={close}/>
                 : <></>
