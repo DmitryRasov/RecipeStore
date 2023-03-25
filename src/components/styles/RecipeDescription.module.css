@@ -1,0 +1,22 @@
+.item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(225, 225, 225, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.recipeCard {
+    max-width: 90%;
+    max-height: 90%;
+    min-width: 500px;
+    min-height: 500px;
+    border-radius: 20px;
+    background: #292929;
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}

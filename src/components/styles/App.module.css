@@ -1,0 +1,15 @@
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+.header {
+    display: flex;
+}
+.header > form {
+    margin: 0 75px 0 auto;
+}
+form {
+    display: flex;
+}
+
