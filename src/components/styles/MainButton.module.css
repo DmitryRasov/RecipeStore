@@ -13,8 +13,10 @@
     background-color: #e1e3e6;
 }
 .ingredient {
+    border-left-width: 1px;
     border-bottom-right-radius: 15px;
 }
 .favorite {
+    border-right-width: 1px;
     border-bottom-left-radius: 15px;
 }

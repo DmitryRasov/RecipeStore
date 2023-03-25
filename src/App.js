@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {API_KEY} from "./components/assets/API_KEY";
-import Recipe from "./components/Recipe";
-import styles from './components/styles/App.module.css'
 import Header from "./components/Header";
+import RandomRecipes from "./components/RandomRecipes";
+import { Routes, Route } from "react-router-dom";
+import FavoriteRecipes from "./components/FavoriteRecipes";
 
 function App() {
     const [recipes, setRecipes] = useState([])
@@ -31,11 +32,10 @@ function App() {
   return (
       <div>
           <Header search={search} setSearch={setSearch} searchRecipe={searchRecipe}></Header>
-            <div className={styles.wrapper}>
-              {recipes.map(recipe => (
-                  <Recipe key={recipe.id} recipe={recipe}/>
-              ))}
-            </div>
+          <Routes>
+              <Route path="/random" element={<RandomRecipes recipes={recipes}/>}/>
+              <Route path="/favorite" element={<FavoriteRecipes />}/>
+          </Routes>
       </div>
   );
 }
