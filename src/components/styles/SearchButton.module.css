@@ -1,5 +1,6 @@
 .btn {
     border: 2px solid black;
+    border-left-width: 1px;
     height: 100%;
     display: flex;
     justify-content: center;

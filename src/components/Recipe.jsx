@@ -3,6 +3,7 @@ import styles from './styles/Recipe.module.css'
 import axios from "axios";
 import {API_KEY} from "./assets/API_KEY";
 import RecipeDescription from "./RecipeDescription";
+import MainButton from "./ui/MainButton";
 
 const Recipe = ({recipe}) => {
     const [isDescription, setIsDescription] = useState(false)
@@ -22,7 +23,7 @@ const Recipe = ({recipe}) => {
         <div key={recipe.id} className={styles.item}>
             <h3 className={styles.header}>{recipe.title}</h3>
             <div style={{backgroundImage: `url(${recipe.image})`}} className={styles.image}></div>
-            <button className={styles.button} onClick={() => getRecipeData(recipe.id)}>Inregidents</button>
+            <MainButton onClick={() => getRecipeData(recipe.id)} buttonTitle={'Ingredients'}></MainButton>
             { isDescription
                 ? <RecipeDescription recipe={recipe} recipeData={recipeData} close={close}/>
                 : <></>

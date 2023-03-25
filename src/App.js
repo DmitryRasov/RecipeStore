@@ -35,7 +35,7 @@ function App() {
               <h1>Recipe App</h1>
               <form>
                   <SearchInput value={search} handleChange={(e) => setSearch(e.target.value)} type="text"/>
-                  <SearchButton onClick={e => searchRecipe(e)} buttonName={'Search'}></SearchButton>
+                  <SearchButton onClick={e => searchRecipe(e)} buttonTitle={'Search'}></SearchButton>
               </form>
           </div>
           <div className={styles.wrapper}>
