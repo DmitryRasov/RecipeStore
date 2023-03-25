@@ -1,0 +1,10 @@
+
+.header {
+    display: flex;
+}
+.header > form {
+    margin: 0 75px 0 auto;
+}
+.input_fields {
+    display: flex;
+}
