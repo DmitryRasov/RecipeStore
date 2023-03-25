@@ -33,6 +33,7 @@ function App() {
       <div>
           <Header search={search} setSearch={setSearch} searchRecipe={searchRecipe}></Header>
           <Routes>
+              <Route path="*" element={<div>Page doesn't exist :(</div>}/>
               <Route path="/random" element={<RandomRecipes recipes={recipes}/>}/>
               <Route path="/favorite" element={<FavoriteRecipes />}/>
           </Routes>

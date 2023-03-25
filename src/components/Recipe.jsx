@@ -18,13 +18,16 @@ const Recipe = ({recipe}) => {
     const close = (state) => {
         setIsDescription(state)
     }
+    const storeLocal = (id) => {
+        localStorage.setItem(`recipe${id}`, id)
+    }
 
     return (
         <div key={recipe.id} className={styles.item}>
             <h3  className={styles.header}>{recipe.title}</h3>
             <div style={{backgroundImage: `url(${recipe.image})`}} className={styles.image}></div>
             <div className={styles.wrapper}>
-                <MainButton role={"favorite"} buttonTitle={'Add to favorite'}></MainButton>
+                <MainButton role={"favorite"} onClick={() => storeLocal(recipe.id)} buttonTitle={'Add to favorite'}></MainButton>
                 <MainButton role={"ingredient"} onClick={() => getRecipeData(recipe.id)} buttonTitle={'Ingredients'}></MainButton>
             </div>
             { isDescription
