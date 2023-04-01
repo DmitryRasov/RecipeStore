@@ -5,7 +5,7 @@ import {API_KEY} from "./assets/API_KEY";
 import RecipeDescription from "./RecipeDescription";
 import MainButton from "./ui/MainButton";
 
-const Recipe = ({recipe}) => {
+const Recipe = ({recipe, par}) => {
     const [isDescription, setIsDescription] = useState(false)
     const [recipeData, setRecipeData] = useState([])
     console.log(recipe)
@@ -21,13 +21,19 @@ const Recipe = ({recipe}) => {
     const storeLocal = (id) => {
         localStorage.setItem(`recipe_${id}`, id)
     }
+    const removeLocal = (id) => {
+        localStorage.removeItem(`recipe_${id}`)
+    }
 
     return (
         <div key={recipe.id} className={styles.item}>
             <h3  className={styles.header}>{recipe.title}</h3>
             <div style={{backgroundImage: `url(${recipe.image})`}} className={styles.image}></div>
             <div className={styles.wrapper}>
-                <MainButton role={"favorite"} onClick={() => storeLocal(recipe.id)} buttonTitle={'Add to favorite'}></MainButton>
+                { par === 'random'
+                    ? <MainButton role={"favorite"} onClick={() => storeLocal(recipe.id)} buttonTitle={'Add to favorite'}></MainButton>
+                    : <MainButton role={"removeFavorite"} onClick={() => removeLocal(recipe.id)} buttonTitle={'Remove'}></MainButton>
+                }
                 <MainButton role={"ingredient"} onClick={() => getRecipeData(recipe.id)} buttonTitle={'Ingredients'}></MainButton>
             </div>
             { isDescription

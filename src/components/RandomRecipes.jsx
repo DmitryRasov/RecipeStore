@@ -6,7 +6,7 @@ const RandomRecipes = ({recipes}) => {
     return (
         <div className={styles.wrapper}>
             {recipes.map(recipe => (
-                <Recipe key={recipe.id} recipe={recipe}/>
+                <Recipe par={'random'} key={recipe.id} recipe={recipe}/>
             ))}
         </div>
     );

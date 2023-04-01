@@ -16,7 +16,7 @@ const FavoriteRecipes = () => {
     return (
         <div className={styles.wrapper}>
             {favorite.map(fav => (
-                <Recipe key={fav.id} recipe={fav}/>
+                <Recipe par={'favorite'} key={fav.id} recipe={fav}/>
             ))}
         </div>
     );

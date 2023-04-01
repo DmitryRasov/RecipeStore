@@ -5,16 +5,14 @@ import Header from "./components/Header";
 import RandomRecipes from "./components/RandomRecipes";
 import { Routes, Route } from "react-router-dom";
 import FavoriteRecipes from "./components/FavoriteRecipes";
-import {fetchRandoService} from "./components/services/fetchRandomService";
+import {fetchRandomService} from "./components/services/fetchRandomService";
 import NoPage from "./components/NoPage";
 
 function App() {
     const [recipes, setRecipes] = useState([])
 
     useEffect(() => {
-        const fetchData = async () => {
-            setRecipes(await fetchRandoService())
-        }
+        const fetchData = async () => setRecipes(await fetchRandomService())
         fetchData()
     }, [])
 

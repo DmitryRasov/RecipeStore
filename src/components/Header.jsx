@@ -16,8 +16,8 @@ const Header = ({searchRecipe}) => {
     return (
         <div className={styles.header}>
             <h1>Recipe App</h1>
-            <Link to="/random">Random Recipes</Link>
-            <Link to="/favorite">Favorite Recipes</Link>
+            <Link className={styles.link} to="/random">Random Recipes</Link>
+            <Link className={styles.link} to="/favorite">Favorite Recipes</Link>
             <form className={styles.input_fields}>
                 <SearchInput value={search} handleChange={(e) => setSearch(e.target.value)} type="text"/>
                 <SearchButton onClick={e => searchHandler(e)} buttonTitle={'Search'}></SearchButton>
