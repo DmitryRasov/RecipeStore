@@ -6,11 +6,10 @@ import RandomRecipes from "./components/RandomRecipes";
 import { Routes, Route } from "react-router-dom";
 import FavoriteRecipes from "./components/FavoriteRecipes";
 import {fetchRandoService} from "./components/services/fetchRandomService";
+import NoPage from "./components/NoPage";
 
 function App() {
     const [recipes, setRecipes] = useState([])
-    const [search, setSearch] = useState('')
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,19 +17,18 @@ function App() {
         }
         fetchData()
     }, [])
-    
-    const searchRecipe = async (e) => {
+
+    const searchRecipe = async (e, search) => {
         e.preventDefault()
         const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${search}&${API_KEY}`)
         setRecipes(response.data.results)
-        setSearch('')
     }
 
   return (
       <div>
-          <Header search={search} setSearch={setSearch} searchRecipe={searchRecipe}></Header>
+          <Header searchRecipe={searchRecipe}></Header>
           <Routes>
-              <Route path="*" element={<div>Page doesn't exist :(</div>}/>
+              <Route path="*" element={<NoPage/>}/>
               <Route path="/random" element={<RandomRecipes recipes={recipes}/>}/>
               <Route path="/favorite" element={<FavoriteRecipes/>}/>
           </Routes>
