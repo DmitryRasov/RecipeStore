@@ -8,7 +8,7 @@ import MainButton from "./ui/MainButton";
 const Recipe = ({recipe, par}) => {
     const [isDescription, setIsDescription] = useState(false)
     const [recipeData, setRecipeData] = useState([])
-    console.log(recipe)
+    // console.log(recipe)
 
     const getRecipeData = async (id) => {
         const recipesData = await axios.get(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?${API_KEY}`)

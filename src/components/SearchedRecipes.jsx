@@ -1,18 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./styles/RandomRecipes.module.css";
 import Recipe from "./Recipe";
-import {fetchRandomService} from "./services/fetchRandomService";
 
-const RandomRecipes = () => {
-    const [recipes, setRecipes] = useState([])
+const SearchedRecipes = ({ser}) => {
+    const [recipes, setRecipe] = useState([])
 
-
-    useEffect(() => {
-
-        const fetchData = async () => setRecipes(await fetchRandomService())
-
-        fetchData()
-    }, [])
+    useEffect(()=> {
+        const main = () => {
+            setRecipe(ser)
+        }
+        main()
+    })
 
     return (
         <div className={styles.wrapper}>
@@ -23,4 +21,4 @@ const RandomRecipes = () => {
     );
 };
 
-export default RandomRecipes;
+export default SearchedRecipes;
