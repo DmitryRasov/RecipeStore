@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import RandomRecipes from "./components/RandomRecipes";
 import { Routes, Route } from "react-router-dom";
 import FavoriteRecipes from "./components/FavoriteRecipes";
+import {fetchRandoService} from "./components/services/fetchRandomService";
 
 function App() {
     const [recipes, setRecipes] = useState([])
@@ -13,14 +14,11 @@ function App() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`https://api.spoonacular.com/recipes/random?number=10&${API_KEY}`)
-            setRecipes(response.data.recipes)
-            console.log(response.data.recipes)
+            setRecipes(await fetchRandoService())
         }
         fetchData()
     }, [])
-
-
+    
     const searchRecipe = async (e) => {
         e.preventDefault()
         const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${search}&${API_KEY}`)
@@ -28,14 +26,13 @@ function App() {
         setSearch('')
     }
 
-
   return (
       <div>
           <Header search={search} setSearch={setSearch} searchRecipe={searchRecipe}></Header>
           <Routes>
               <Route path="*" element={<div>Page doesn't exist :(</div>}/>
               <Route path="/random" element={<RandomRecipes recipes={recipes}/>}/>
-              <Route path="/favorite" element={<FavoriteRecipes />}/>
+              <Route path="/favorite" element={<FavoriteRecipes/>}/>
           </Routes>
       </div>
   );

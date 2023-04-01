@@ -19,7 +19,7 @@ const Recipe = ({recipe}) => {
         setIsDescription(state)
     }
     const storeLocal = (id) => {
-        localStorage.setItem(`recipe${id}`, id)
+        localStorage.setItem(`recipe_${id}`, id)
     }
 
     return (
