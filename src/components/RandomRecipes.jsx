@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./styles/RandomRecipes.module.css";
 import Recipe from "./Recipe";
-import {fetchRandomService} from "./services/fetchRandomService";
+import {fetchRandomService} from "./services/fetchRandomService.ts";
 
 const RandomRecipes = () => {
     const [recipes, setRecipes] = useState([])

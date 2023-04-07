@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Recipe from "./Recipe";
 import styles from './styles/FavoriteRecipes.module.css'
-import {fetchFavoriteService} from "./services/fetchFavoriteService";
+import {fetchFavoriteService} from "./services/fetchFavoriteService.ts";
 
 const FavoriteRecipes = () => {
     const [favorite, setFavorite] = useState([])
@@ -12,11 +12,15 @@ const FavoriteRecipes = () => {
         }
         faves()
     }, [])
+    const deleteFavorite = (id) => {
+        const filteredFavorites = favorite.filter((fav) => fav.id !== id)
+        setFavorite(filteredFavorites)
+    }
 
     return (
         <div className={styles.wrapper}>
             {favorite.map(fav => (
-                <Recipe par={'favorite'} key={fav.id} recipe={fav}/>
+                <Recipe par={'favorite'} key={fav.id} recipe={fav} deleteFavorite={deleteFavorite}/>
             ))}
         </div>
     );

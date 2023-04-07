@@ -5,7 +5,7 @@ import {API_KEY} from "./assets/API_KEY";
 import RecipeDescription from "./RecipeDescription";
 import MainButton from "./ui/MainButton";
 
-const Recipe = ({recipe, par}) => {
+const Recipe = ({recipe, par, deleteFavorite}) => {
     const [isDescription, setIsDescription] = useState(false)
     const [recipeData, setRecipeData] = useState([])
     // console.log(recipe)
@@ -23,6 +23,7 @@ const Recipe = ({recipe, par}) => {
     }
     const removeLocal = (id) => {
         localStorage.removeItem(`recipe_${id}`)
+        deleteFavorite(id)
     }
 
     return (

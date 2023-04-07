@@ -1,5 +1,6 @@
 import axios from "axios";
 import {API_KEY} from "../assets/API_KEY";
+import {IFavoriteRecipe} from "../models/IFavoriteRecipe";
 
 export const fetchFavoriteService = async () => {
     const recipes = []
@@ -7,7 +8,7 @@ export const fetchFavoriteService = async () => {
         for (let i = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i)
             let id = localStorage.getItem(key)
-            const recipe = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?${API_KEY}`)
+            const recipe = await axios.get<IFavoriteRecipe>(`https://api.spoonacular.com/recipes/${id}/information?${API_KEY}`)
             recipes.push(recipe.data)
         }
     }
