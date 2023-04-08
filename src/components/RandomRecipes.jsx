@@ -1,18 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import styles from "./styles/RandomRecipes.module.css";
 import Recipe from "./Recipe";
 import {fetchRandomService} from "./services/fetchRandomService.ts";
 
-const RandomRecipes = () => {
+
+const RandomRecipes = ({handleShow}) => {
     const [recipes, setRecipes] = useState([])
 
-
     useEffect(() => {
-
         const fetchData = async () => setRecipes(await fetchRandomService())
-
         fetchData()
+        handleShow(false)
     }, [])
+
 
     return (
         <div className={styles.wrapper}>

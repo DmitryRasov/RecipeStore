@@ -1,5 +1,6 @@
 import axios from "axios";
-import {API_KEY} from "../assets/API_KEY";
+// @ts-ignore
+import {API_KEY} from "../assets/API_KEY.ts";
 import {IFavoriteRecipe} from "../models/IFavoriteRecipe";
 
 export const fetchFavoriteService = async () => {

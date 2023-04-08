@@ -3,13 +3,14 @@ import Recipe from "./Recipe";
 import styles from './styles/FavoriteRecipes.module.css'
 import {fetchFavoriteService} from "./services/fetchFavoriteService.ts";
 
-const FavoriteRecipes = () => {
+const FavoriteRecipes = ({handleShow}) => {
     const [favorite, setFavorite] = useState([])
 
     useEffect(() => {
         const faves = async () => {
             setFavorite(await fetchFavoriteService())
         }
+        handleShow(false)
         faves()
     }, [])
     const deleteFavorite = (id) => {

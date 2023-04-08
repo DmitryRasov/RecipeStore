@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import styles from './styles/Recipe.module.css'
 import axios from "axios";
-import {API_KEY} from "./assets/API_KEY";
+import {API_KEY} from "./assets/API_KEY.ts";
 import RecipeDescription from "./RecipeDescription";
-import MainButton from "./ui/MainButton";
+import MainButton from "./ui/MainButton.tsx";
 
 const Recipe = ({recipe, par, deleteFavorite}) => {
     const [isDescription, setIsDescription] = useState(false)

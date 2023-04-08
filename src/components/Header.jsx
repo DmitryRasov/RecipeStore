@@ -4,9 +4,9 @@ import SearchInput from "./ui/SearchInput";
 import SearchButton from "./ui/SearchButton";
 import {Link} from "react-router-dom";
 import axios from "axios";
-import {API_KEY} from "./assets/API_KEY";
+import {API_KEY} from "./assets/API_KEY.ts";
 
-const Header = ({getSearch}) => {
+const Header = ({getSearch, show}) => {
     const [search, setSearch] = useState('')
 
     const searchRecipe = async (e, search) => {
@@ -17,17 +17,19 @@ const Header = ({getSearch}) => {
         return response.data.results
     }
 
-
     return (
         <div className={styles.header}>
             <h1>Recipe App</h1>
             <Link className={styles.link} to="/random">Random Recipes</Link>
             <Link className={styles.link} to="/search">Search Recipes</Link>
             <Link className={styles.link} to="/favorite">Favorite Recipes</Link>
-            <form className={styles.input_fields}>
-                <SearchInput value={search} handleChange={(e) => setSearch(e.target.value)} type="text"/>
-                <SearchButton onClick={e => searchRecipe(e, search)} buttonTitle={'Search'}></SearchButton>
-            </form>
+            { show === true
+                ? <form className={styles.input_fields}>
+                    <SearchInput value={search} handleChange={(e) => setSearch(e.target.value)} type="text"/>
+                    <SearchButton onClick={e => searchRecipe(e, search)} buttonTitle={'Search'}></SearchButton>
+                  </form>
+                : <></>
+                }
         </div>
     );
 };
